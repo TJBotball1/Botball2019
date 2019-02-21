@@ -1,0 +1,29 @@
+   while(analog(0) < BLACK) //waits until hits black line
+    {
+        back(100,5);
+    }
+   
+   right(700, 1);
+   followLeft();
+   fwd(100, 300);		// go slightly in to get more poms
+   moveArm(0); 
+   back(100, 1300);
+   left(2500, 1);
+
+
+   while(analog(0) < BLACK)
+ 	right(5, 1);        
+   right(1600, 1);    
+   
+   while(digital(1) != 1) //waits until the bot hits pvc
+        fwd(80, 5);
+   back(100, 200);
+   moveArm(1); //guys arm down
+   
+   while(analog(0) < BLACK)
+    {
+        back(100,5);
+    }
+    right(700, 1);
+   followLeft();
+   fwd(100, 300);	 	// go slightly in to get more poms
