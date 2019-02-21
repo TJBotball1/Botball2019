@@ -1,0 +1,138 @@
+#include <kipr/botball.h>
+
+int main()
+{
+    wait_for_light(1);
+    
+    //chain is extended
+    motor(2, 150);
+    msleep(11100);
+   	motor(2, 0);
+   
+    //chain moves up and down
+    motor(3, 40);
+    msleep(6000);
+    motor(3, 0);
+    
+    //chain is retracted
+    motor(2, -150);
+    msleep(11100);
+    motor(2, 0);
+    
+    //create moves
+   	create_connect();
+    //drive straight
+   	create_drive_straight(-500);
+    msleep(1000);
+    //turn left
+    create_drive_direct(-50 ,50 ); 
+    msleep(5000);
+    //drive straight
+    create_drive_straight(-250);
+    msleep(2000);
+    //turn right and align
+    //turn right
+    create_drive_direct(50, -50);
+    msleep(2000);
+    create_drive_direct(0,0);
+    //half close claw
+    enable_servos();
+    set_servo_position(1, 1000);
+    msleep(1200);
+    //drive straight
+    create_drive_straight(-500);
+    msleep(300);
+    create_drive_direct(0,0);
+    //full close claw
+    set_servo_position(1, 0);
+    msleep(1200);
+    //turn right to overalign to not hit the poms at the second t
+    create_drive_direct(50,-50);
+    msleep(4000);
+    create_drive_direct(0,0);
+    //half open claw
+    set_servo_position(1, 1000);
+    msleep(1200);
+    //turn right to align
+    create_drive_direct(-50,50);
+    msleep(700);
+    create_drive_direct(0,0);
+    
+    
+    
+    //drive straight to collect poms
+    create_drive_straight(-500);
+    msleep(3400);
+    create_drive_direct(0,0);
+    //fully close claw
+    set_servo_position(1, 0);
+    msleep(1000);
+    //go back to align poms for deposit
+    create_drive_straight(500);
+    msleep(1000);
+    create_drive_direct(0,0);
+    //turn right 90 degrees
+    create_drive_direct(50, -50);
+    msleep(3300);
+    create_drive_direct(0,0);
+    //fullyish open claw
+    set_servo_position(1, 1500);
+    msleep(1000);
+    //drive straight to deposit poms
+    create_drive_straight(-250);
+    msleep(2000);
+    //drive back
+    create_drive_straight(250);
+    msleep(2000);
+    create_drive_direct(0,0);
+    
+    //hit the frisbee
+    //fully open claw
+    set_servo_position(1, 2047);
+    msleep(1000);
+    //turn right 90 degrees
+    create_drive_direct(50, -50);
+    msleep(3300);
+    create_drive_direct(0,0);
+    //drive straight toward frisbee
+    create_drive_straight(-500);
+    msleep(850);
+    create_drive_direct(0,0);
+    //turn right 90 degrees
+    create_drive_direct(50, -50);
+    msleep(3300);
+    create_drive_direct(0,0);
+    //drive straight toward blue t
+    create_drive_straight(-500);
+    msleep(500);
+    create_drive_direct(0,0);
+    //turn right 45 degrees
+    create_drive_direct(-50, 50);
+    msleep(1600);
+    create_drive_direct(0,0);
+    //drive straight toward blue t more
+    create_drive_straight(-500);
+    msleep(400);
+    create_drive_direct(0,0);
+    //chain is extended
+    motor(2, 150);
+    msleep(6000);
+   	motor(2, 0);
+    //turn left 45 degrees
+    create_drive_direct(-50, 50);
+    msleep(1700);
+    create_drive_direct(0,0);
+    //chain is retracted
+    motor(2, -150);
+    msleep(6000);
+   	motor(2, 0);
+    //drive over green frisbee
+    create_drive_straight(-50);
+    msleep(10500);
+    create_drive_direct(0,0);
+    
+    create_disconnect(); 
+
+    
+    return 0;
+}
