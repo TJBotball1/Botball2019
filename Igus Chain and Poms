@@ -86,7 +86,7 @@ int main()
     msleep(2000);
     create_drive_direct(0,0);
     
-    //hit the frisbee
+    
     //fully open claw
     set_servo_position(1, 2047);
     msleep(1000);
@@ -94,7 +94,7 @@ int main()
     create_drive_direct(50, -50);
     msleep(3300);
     create_drive_direct(0,0);
-    //drive straight toward frisbee
+
     create_drive_straight(-500);
     msleep(850);
     create_drive_direct(0,0);
@@ -126,7 +126,7 @@ int main()
     motor(2, -150);
     msleep(6000);
    	motor(2, 0);
-    //drive over green frisbee
+   
     create_drive_straight(-50);
     msleep(10500);
     create_drive_direct(0,0);
