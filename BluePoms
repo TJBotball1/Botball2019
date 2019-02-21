@@ -1,0 +1,28 @@
+int main()
+{
+	moveArm(0);
+	initialize();  // run starting sequences
+	fwd(90, 3350);  // move foward to get just past the middle line
+	moveArm(1);  // lift arm
+	
+	while(analog(0) < BLACK)  // turn until on middle line
+    	right(5, 1); 
+	
+   printf("%d", analog(0));
+	
+	followLeft();  // follow left side of middle line until you hit PVC
+	right(75, 1);  // correct angle of attack slightly
+	fwd(100, 300);  // go slightly in to get more poms
+	moveArm(0);    
+	back(100, 1250);
+	left(300, 1);
+	
+	while(analog(0) < BLACK)
+	  left(5, 1);
+	
+	right(1525, 1); //THIS VALUE
+	
+	while(digital(1) != 1) //move the robot into the blue pom zone
+    	fwd(80, 5); //until side sensor hits pvc
+	back(100, 250);
+   
