@@ -1,0 +1,36 @@
+#include <kipr/botball.h>
+
+int main()
+{
+    printf("Start");
+    
+    camera_open();
+    camera_update(); 
+    create_connect();
+    
+    while (1) { // until the camera detects a red object
+        if (get_object_count(2) > 0) { //if red object is detected
+            if (get_object_center_column(2,0) < 70) { // on left
+                printf("on left \n");
+                create_drive_direct(-50, 50); // turn to left
+                msleep(2000); //aprox 45deg
+            } else if (get_object_center_column(2,0) > 90) { // on right
+                printf("on right \n");
+                create_drive_direct(50, -50); // turn to right
+                msleep(2000); //approx4 45 deg
+            } else { // in center
+                printf("centered\n");
+            }
+            create_drive_direct(50, 50); // go forward
+            msleep(2000);
+            break; 
+        } 
+        else {
+            printf("nothing \n");    
+        }
+        msleep(100); // -- important delay to prevent lag while testing
+        camera_update();
+    }
+    camera_close();
+    return 0;
+}
