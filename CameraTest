@@ -30,6 +30,7 @@ int main()
         {
             printf("nothing \n");    
         }
+        msleep(100); // -- important delay to prevent lag while testing
         camera_update();
     }
     camera_close();
