@@ -4,34 +4,32 @@ int main()
 {
     printf("Start");
     camera_open();
-    camera_update();
+    camera_update(); 
     create_connect();
     
-    while (1) 
+    while (1) // until the camera detects a red object
     {
-        if (get_object_count(2) > 0)
+        if (get_object_count(2) > 0) //if red object is detected
         {
-            //printf("red thing \n");
-            if (get_object_center_column(2,0) < 70) {
+            if (get_object_center_column(2,0) < 70) { // on left
                 printf("on left \n");
-                create_drive_direct(-50, 50);
-                msleep(2000);
-            } else if (get_object_center_column(2,0) > 90) {
+                create_drive_direct(-50, 50); // turn to left
+                msleep(2000); //aprox 45deg
+            } else if (get_object_center_column(2,0) > 90) { // on right
                 printf("on right \n");
-                create_drive_direct(50, -50);
-                msleep(2000);
-            } else { 
+                create_drive_direct(50, -50); // turn to right
+                msleep(2000); //approx4 45 deg
+            } else { // in center
                 printf("centered\n");
             }
-            create_drive_direct(50, 50);
+            create_drive_direct(50, 50); // go forward
             msleep(2000);
-            break;
+            break; 
         } 
         else 
         {
             printf("nothing \n");    
         }
-        msleep(100);
         camera_update();
     }
     camera_close();
