@@ -3,14 +3,13 @@
 int main()
 {
     printf("Start");
+    
     camera_open();
     camera_update(); 
     create_connect();
     
-    while (1) // until the camera detects a red object
-    {
-        if (get_object_count(2) > 0) //if red object is detected
-        {
+    while (1) { // until the camera detects a red object
+        if (get_object_count(2) > 0) { //if red object is detected
             if (get_object_center_column(2,0) < 70) { // on left
                 printf("on left \n");
                 create_drive_direct(-50, 50); // turn to left
@@ -26,8 +25,7 @@ int main()
             msleep(2000);
             break; 
         } 
-        else 
-        {
+        else {
             printf("nothing \n");    
         }
         msleep(100); // -- important delay to prevent lag while testing
